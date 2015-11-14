@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin">
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
 
     <RelativeLayout
         android:id="@+id/name"
@@ -23,40 +23,44 @@
             <TextView
                 android:id="@+id/Itemname"
                 android:text="Group Name"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:paddingTop="5dp" />
+                android:textColor="#000"
+                android:textSize="17sp" />
 
             <TextView
                 android:text="Next activity: Run 10 miles"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:textColor="#000"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="100dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_alignParentEnd="true"
-            android:paddingTop="5dp" >
+            android:paddingTop="1dp" >
 
             <TextView
                 android:text="0.001 BTC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:paddingTop="5dp"
+                android:textSize="13sp"
+                android:textColor="#757575"
+                android:paddingTop="2dp"
                 android:layout_gravity="right" />
 
             <TextView
                 android:text="Nov 16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:paddingTop="5dp"
+                android:textSize="13sp"
+                android:textColor="#757575"
+                android:paddingTop="3dp"
                 android:layout_gravity="right" />
 
         </LinearLayout>
@@ -73,7 +77,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:background="@drawable/accent_back"/>
+            android:background="@drawable/accent_back" />
 
     </LinearLayout>
 

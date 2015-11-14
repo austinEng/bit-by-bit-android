@@ -1,6 +1,8 @@
 package com.example.austin.bit_by_bit;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,13 +40,25 @@ public class MainFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setListAdapter(new ArrayAdapter<String>(
-                this.getContext(), R.layout.list_item_group, R.id.Itemname, itemname
+                getContext(), R.layout.list_item_group, R.id.Itemname, itemname
         ));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.list_group, container, false);
+        View view = inflater.inflate(R.layout.list_group, container, false);
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.new_grp_fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity().getBaseContext(), CreateGroupActivity.class);
+                startActivity(i);
+            }
+        });
+
+        return view;
+
     }
 
     @Override
