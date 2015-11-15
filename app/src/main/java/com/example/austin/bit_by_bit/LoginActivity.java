@@ -83,6 +83,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }*/
 
     static JSONObject token = null;
+    static String id;
+    static String userId;
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -385,14 +387,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 InputStream is = response.getEntity().getContent();
                 java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
                 String str = s.hasNext() ? s.next() : "";
-                Log.d("asdfasdf", str);
                 if (str.toLowerCase().contains("error")) {
                     return false;
                 }
                 JSONTokener tokener = new JSONTokener(str);
                 JSONObject json = new JSONObject(tokener);
                 token = json;
-                Log.d("asdf", token.toString());
 
             } catch (ClientProtocolException e) {
                 // Log exception
@@ -414,6 +414,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                Log.d("TOKEN", token.toString());
+                try {
+                    id = (String) token.get("id");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    userId = (String) token.get("userId");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

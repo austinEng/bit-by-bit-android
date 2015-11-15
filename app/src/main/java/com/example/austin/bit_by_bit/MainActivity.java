@@ -101,14 +101,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String id = null;
         try {
             id = (String) LoginActivity.token.get("id");
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Intent intent = new Intent(that, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
 
-        userRepository.findById(id, new ObjectCallback<User>() {
+        userRepository.findById(LoginActivity.id, new ObjectCallback<User>() {
             @Override
             public void onSuccess(User user) {
                 if (user != null) {
