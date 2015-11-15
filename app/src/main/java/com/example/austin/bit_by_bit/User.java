@@ -1,44 +1,41 @@
 package com.example.austin.bit_by_bit;
 
-import java.util.HashSet;
-import com.strongloop.android.loopback.Model;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
+import java.math.BigDecimal;
 
 /**
  * Created by austin on 11/14/15.
  */
-public class User extends Model {
-    private String name;
-    private HashSet<Group> groups;
+public class User extends com.strongloop.android.loopback.User {
+    private String username;
 
-    public User(String name) {
-        this.name = name;
-        this.groups = new HashSet<>();
+    public String getUsername() {
+        return username;
     }
 
-    public String getName() {
-        return name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String toString() {
+        return getUsername();
     }
 
-    public Boolean addGroup(Group group) {
-        if (!groups.contains(group)) {
-            groups.add(group);
-            return true;
-        } else {
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 31).append(username).toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof User))
             return false;
-        }
-    }
-
-    public Boolean removeGroup(Group group) {
-        if (groups.contains(group)) {
-            groups.remove(group);
+        if (obj == this)
             return true;
-        } else {
-            return false;
-        }
-    }
 
+        User rhs = (User) obj;
+        return new EqualsBuilder().append(username, rhs.username).isEquals();
+    }
 }

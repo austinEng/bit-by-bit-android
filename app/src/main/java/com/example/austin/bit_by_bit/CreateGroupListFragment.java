@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+
 import java.util.ArrayList;
 
 /**
@@ -15,8 +16,8 @@ import java.util.ArrayList;
 
 public class CreateGroupListFragment extends ListFragment {
 
-    public ArrayList<String> people;
-    public ArrayAdapter<String> adapter;
+    public ArrayList<User> people;
+    public UserMultiSelectAdapter adapter;
 
     public CreateGroupListFragment() {
 
@@ -33,7 +34,7 @@ public class CreateGroupListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         people = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(getContext(), R.layout.list_item_friend, R.id.Itemname, people);
+        adapter = new UserMultiSelectAdapter(getActivity(), 0, people);
         this.setListAdapter(adapter);
     }
 

@@ -63,7 +63,6 @@ public class DrawerActivity extends ListActivity
         mDrawerList = (NavigationView) findViewById(R.id.nav_view);
         mDrawerList.setNavigationItemSelectedListener(this);
 
-        adapter = new RestAdapter(getApplicationContext(), "localhost:3000/api");
     }
 
     @Override

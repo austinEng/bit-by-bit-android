@@ -1,12 +1,14 @@
 package com.example.austin.bit_by_bit;
 
-import com.strongloop.android.loopback.ModelRepository;
-
 /**
  * Created by austin on 11/14/15.
  */
-public class UserRepository extends ModelRepository<User> {
+public class UserRepository extends com.strongloop.android.loopback.UserRepository<User> {
+    public interface LoginCallback extends com.strongloop.android.loopback.UserRepository.LoginCallback<User> {
+
+    }
+
     public UserRepository() {
-        super("user", User.class);
+        super("user", null, User.class);
     }
 }
